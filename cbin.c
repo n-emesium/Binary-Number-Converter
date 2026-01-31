@@ -14,8 +14,13 @@ L:
 }
 static inline int matoi(char *s) {
 	register int c = 0;
+    register signed char sg = 1;
+    if (*s == '-') {
+        s++;
+        sg = -1;
+    }
 	while (*s && (c = 10 * c + (*s++ - '0')));
-	return c;
+	return c * sg;
 }
 static void cbin(int n) {
 	if (n == 0) {
